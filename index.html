@@ -31,13 +31,14 @@
     <h1>Welcome to BandidoSRP</h1>
     <p>Click below to connect to both TeamSpeak and RedM. Get the TeamSpeak password from our Discord channel.</p>
     <button onclick="connectBoth()">Connect Now</button>
+    <p>If RedM doesn't connect, manually join at <strong>141.195.99.102:30120</strong> in the RedM server browser.</p>
 
     <script>
         function connectBoth() {
             var tsUrl = 'ts3server://ts.bandidosrp.com';
             var redmUrl = 'redm://connect/141.195.99.102:30120/';
             window.open(tsUrl, '_blank');
-            window.open(redmUrl, '_blank');
+            setTimeout(function() { window.open(redmUrl, '_blank'); }, 500);
         }
     </script>
 </body>
