@@ -4,55 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect to BandidoSRP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         body { 
-            font-family: Arial, sans-serif; 
+            font-family: 'Bangers', Arial, sans-serif; 
             text-align: center; 
-            padding: 50px; 
-            background-color: #f0f0f0; 
-            color: #333; 
+            padding: 50px 20px; 
+            background-color: #000000; 
+            color: #FFFFFF; 
             margin: 0;
+            border: 3px solid #FF0000; /* Red outline like logo */
+            min-height: 100vh;
         }
-        h1 { font-size: 2.5em; margin-bottom: 20px; }
-        p { font-size: 1.2em; margin-bottom: 30px; }
-        .button-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        h1 { 
+            font-size: 3em; 
+            margin: 0 0 20px 0; 
+            color: #FFFFFF; 
+            text-shadow: 2px 2px 4px #FF0000; /* Red glow */
+            font-weight: bold;
+        }
+        .logo {
+            max-width: 400px; 
+            width: 100%; 
+            margin-bottom: 20px; 
+            border: 2px solid #FF0000; 
+            border-radius: 5px;
+        }
+        p { 
+            font-size: 1.5em; 
+            margin-bottom: 30px; 
+            color: #FFFFFF;
+        }
+        .button-container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            flex-wrap: wrap; 
+        }
         button { 
             padding: 15px 30px; 
-            font-size: 18px; 
+            font-size: 20px; 
             cursor: pointer; 
-            border: none; 
+            border: 2px solid #FF0000; 
             border-radius: 5px; 
-            color: white; 
-            transition: background-color 0.3s; 
+            color: #FFFFFF; 
+            background-color: #333333; /* Dark leather-like */
+            font-family: 'Bangers', Arial, sans-serif;
+            transition: all 0.3s ease; 
+            text-transform: uppercase;
         }
-        .ts-button { background-color: #4CAF50; }
-        .ts-button:hover { background-color: #45a049; }
-        .redm-button { background-color: #e53935; }
-        .redm-button:hover { background-color: #d32f2f; }
-        a { color: #4CAF50; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        button:hover { 
+            background-color: #FF0000; 
+            box-shadow: 0 0 10px #FF0000; /* Red glow on hover */
+            transform: scale(1.05);
+        }
+        a { 
+            color: #FF0000; 
+            text-decoration: none; 
+            border-bottom: 1px solid #FF0000;
+        }
+        a:hover { 
+            color: #FFFFFF; 
+            text-decoration: underline;
+        }
         .instructions { 
             display: none; 
             margin: 30px auto; 
-            background: white; 
+            background: #1a1a1a; /* Dark gray for contrast */
             padding: 20px; 
             border-radius: 10px; 
             max-width: 600px; 
             text-align: left; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); /* Red shadow */
+            border: 1px solid #FF0000;
         }
         .instructions.show { 
             display: block; 
             animation: fadeIn 0.5s; 
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace; }
-        .troubleshoot { margin-top: 15px; padding: 10px; background: #fff3cd; border-radius: 5px; }
+        code { 
+            background: #333333; 
+            padding: 2px 5px; 
+            border-radius: 3px; 
+            font-family: monospace; 
+            color: #FF0000;
+        }
+        .troubleshoot { 
+            margin-top: 15px; 
+            padding: 10px; 
+            background: #2a0000; /* Dark red tint */
+            border-radius: 5px; 
+            border-left: 4px solid #FF0000;
+        }
+        ol { 
+            padding-left: 20px; 
+        }
+        li { 
+            margin-bottom: 10px; 
+            font-size: 1.1em;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to BandidoSRP</h1>
-    <p>Use the buttons below to connect to TeamSpeak and RedM. Get the TeamSpeak password from our <a href="https://discord.com/invite/z7RAT5qq4S" target="_blank">Discord</a>.</p>
+    <img src="logo.png" alt="BandidoSRP Logo" class="logo"> <!-- Upload logo.png to repo; replace src with URL if hosted elsewhere -->
+    <h1>BandidoSRP</h1>
+    <p>Ride with the Pack. Use the buttons below to connect to TeamSpeak and RedM. Get the TeamSpeak password from our <a href="YOUR_DISCORD_INVITE_LINK" target="_blank">Discord</a>.</p>
     
     <div class="button-container">
         <button class="ts-button" onclick="connectTeamSpeak()">Connect TeamSpeak</button>
@@ -75,7 +132,7 @@
                 <li>Can’t find BandidosRP? Use the direct connect method with <code>141.195.99.102:30120</code>.</li>
                 <li>Check server status: Ping <code>141.195.99.102</code> or use a port checker for 30120.</li>
                 <li>Allow UDP port 30120 in your firewall.</li>
-                <li>Join our <a href="https://discord.com/invite/z7RAT5qq4S" target="_blank">Discord</a> for support.</li>
+                <li>Join our <a href="YOUR_DISCORD_INVITE_LINK" target="_blank">Discord</a> for support.</li>
             </ul>
         </div>
     </div>
