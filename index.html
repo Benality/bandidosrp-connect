@@ -56,25 +56,26 @@
     
     <div class="button-container">
         <button class="ts-button" onclick="connectTeamSpeak()">Connect TeamSpeak</button>
-        <button class="redm-button" onclick="connectRedM()">Connect RedM</button>
+        <button class="redm-button" onclick="showRedMInstructions()">Connect RedM</button>
     </div>
 
     <div id="redmInstructions" class="instructions">
-        <h2>🛡️ RedM Connection Attempted</h2>
-        <p>If RedM didn't launch automatically (the `redm://` protocol may not be fully supported), follow these quick manual steps:</p>
+        <h2>🛡️ Connect to RedM</h2>
+        <p>Join our BandidoSRP server in RedM using one of these methods:</p>
         <ol>
-            <li>Launch the RedM client.</li>
-            <li><strong>Fastest Method</strong>: Press <code>F8</code> to open the console, type <code>connect 141.195.99.102:30120</code>, and press Enter.</li>
-            <li><strong>Alternative</strong>: Go to Play > Server Browser > Direct Connect, enter <code>141.195.99.102:30120</code>, and connect.</li>
-            <li>Add to Favorites for one-click access next time!</li>
+            <li>Launch the RedM client (download from <a href="https://redm.net/" target="_blank">redm.net</a> if needed).</li>
+            <li><strong>Easiest Method</strong>: Go to Play > Server Browser, search for <strong>BandidosRP</strong>, and click to join.</li>
+            <li><strong>Alternative (Direct Connect)</strong>: Press <code>F8</code> to open the console, type <code>connect 141.195.99.102:30120</code>, and press Enter.</li>
+            <li>Add to Favorites in the Server Browser for one-click access next time!</li>
         </ol>
         <div class="troubleshoot">
             <strong>Troubleshooting:</strong>
             <ul>
-                <li>Ensure RedM is installed and updated from <a href="https://redm.net/" target="_blank">redm.net</a>.</li>
-                <li>Check if the server is online: Ping <code>141.195.99.102</code> or use a port checker for 30120.</li>
+                <li>Ensure RedM is updated and not connected to another server.</li>
+                <li>Can’t find BandidosRP? Use the direct connect method with <code>141.195.99.102:30120</code>.</li>
+                <li>Check server status: Ping <code>141.195.99.102</code> or use a port checker for 30120.</li>
                 <li>Allow UDP port 30120 in your firewall.</li>
-                <li>If issues persist, join our <a href="YOUR_DISCORD_INVITE_LINK" target="_blank">Discord</a> for help.</li>
+                <li>Join our <a href="YOUR_DISCORD_INVITE_LINK" target="_blank">Discord</a> for support.</li>
             </ul>
         </div>
     </div>
@@ -89,22 +90,9 @@
             document.body.removeChild(tsLink);
         }
 
-        function connectRedM() {
-            // Attempt redm:// protocol
-            var redmLink = document.createElement('a');
-            redmLink.href = 'redm://connect/141.195.99.102:30120';
-            redmLink.style.display = 'none';
-            document.body.appendChild(redmLink);
-            redmLink.click();
-            document.body.removeChild(redmLink);
-
-            // Show instructions in case it fails (delay for user to notice)
-            setTimeout(function() {
-                var instructions = document.getElementById('redmInstructions');
-                if (!instructions.classList.contains('show')) {
-                    instructions.classList.add('show');
-                }
-            }, 1000);
+        function showRedMInstructions() {
+            var instructions = document.getElementById('redmInstructions');
+            instructions.classList.toggle('show');
         }
     </script>
 </body>
