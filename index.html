@@ -56,12 +56,12 @@
     
     <div class="button-container">
         <button class="ts-button" onclick="connectTeamSpeak()">Connect TeamSpeak</button>
-        <button class="redm-button" onclick="showRedMInstructions()">Connect RedM</button>
+        <button class="redm-button" onclick="connectRedM()">Connect RedM</button>
     </div>
 
     <div id="redmInstructions" class="instructions">
-        <h2>🛡️ Connect to RedM</h2>
-        <p>Join our BandidoSRP server in RedM using one of these methods:</p>
+        <h2>🛡️ RedM Connection Attempted</h2>
+        <p>If RedM didn't launch automatically (the <code>redm://</code> protocol may not be supported), join our BandidoSRP server using one of these methods:</p>
         <ol>
             <li>Launch the RedM client (download from <a href="https://redm.net/" target="_blank">redm.net</a> if needed).</li>
             <li><strong>Easiest Method</strong>: Go to Play > Server Browser, search for <strong>BandidosRP</strong>, and click to join.</li>
@@ -90,9 +90,22 @@
             document.body.removeChild(tsLink);
         }
 
-        function showRedMInstructions() {
-            var instructions = document.getElementById('redmInstructions');
-            instructions.classList.toggle('show');
+        function connectRedM() {
+            // Attempt redm:// protocol
+            var redmLink = document.createElement('a');
+            redmLink.href = 'redm://connect/141.195.99.102:30120';
+            redmLink.style.display = 'none';
+            document.body.appendChild(redmLink);
+            redmLink.click();
+            document.body.removeChild(redmLink);
+
+            // Show instructions in case it fails
+            setTimeout(function() {
+                var instructions = document.getElementById('redmInstructions');
+                if (!instructions.classList.contains('show')) {
+                    instructions.classList.add('show');
+                }
+            }, 1500);
         }
     </script>
 </body>
