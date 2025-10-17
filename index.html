@@ -11,34 +11,78 @@
             padding: 50px; 
             background-color: #f0f0f0; 
             color: #333; 
+            margin: 0;
         }
         h1 { font-size: 2.5em; margin-bottom: 20px; }
         p { font-size: 1.2em; margin-bottom: 30px; }
+        .button-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         button { 
             padding: 15px 30px; 
             font-size: 18px; 
             cursor: pointer; 
-            background-color: #4CAF50; 
-            color: white; 
             border: none; 
             border-radius: 5px; 
+            color: white; 
             transition: background-color 0.3s; 
         }
-        button:hover { background-color: #45a049; }
+        .ts-button { background-color: #4CAF50; }
+        .ts-button:hover { background-color: #45a049; }
+        .redm-button { background-color: #e53935; }
+        .redm-button:hover { background-color: #d32f2f; }
+        a { color: #4CAF50; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .instructions { 
+            display: none; 
+            margin: 30px auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            max-width: 600px; 
+            text-align: left; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .instructions.show { 
+            display: block; 
+            animation: fadeIn 0.5s; 
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
     </style>
 </head>
 <body>
     <h1>Welcome to BandidoSRP</h1>
-    <p>Click below to connect to both TeamSpeak and RedM. Get the TeamSpeak password from our Discord channel.</p>
-    <button onclick="connectBoth()">Connect Now</button>
-    <p>If RedM doesn't connect, manually join at <strong>141.195.99.102:30120</strong> in the RedM server browser.</p>
+    <p>Use the buttons below to connect to TeamSpeak and RedM. Get the TeamSpeak password from our <a href="YOUR_DISCORD_INVITE_LINK" target="_blank">Discord</a>.</p>
+    
+    <div class="button-container">
+        <button class="ts-button" onclick="connectTeamSpeak()">Connect TeamSpeak</button>
+        <button class="redm-button" onclick="showRedMInstructions()">Connect RedM</button>
+    </div>
+
+    <div id="redmInstructions" class="instructions">
+        <h2>🛡️ Connect to RedM</h2>
+        <p>RedM requires manual connection. Follow these quick steps:</p>
+        <ol>
+            <li>Launch RedM client.</li>
+            <li><strong>Fastest Method</strong>: Press <code>F8</code>, type <code>connect 141.195.99.102:30120</code>, and press Enter.</li>
+            <li><strong>Or</strong>: Go to Play > Server Browser > Direct Connect, enter <code>141.195.99.102:30120</code>, and connect.</li>
+            <li>Add to Favorites for quicker access next time!</li>
+        </ol>
+        <p><strong>Need RedM?</strong> Download from <a href="https://redm.net/" target="_blank">redm.net</a>.</p>
+    </div>
 
     <script>
-        function connectBoth() {
-            var tsUrl = 'ts3server://ts.bandidosrp.com';
-            var redmUrl = 'redm://connect/141.195.99.102:30120/';
-            window.open(tsUrl, '_blank');
-            setTimeout(function() { window.open(redmUrl, '_blank'); }, 500);
+        function connectTeamSpeak() {
+            var tsLink = document.createElement('a');
+            tsLink.href = 'ts3server://ts.bandidosrp.com';
+            tsLink.style.display = 'none';
+            document.body.appendChild(tsLink);
+            tsLink.click();
+            document.body.removeChild(tsLink);
+        }
+
+        function showRedMInstructions() {
+            var instructions = document.getElementById('redmInstructions');
+            instructions.classList.toggle('show');
         }
     </script>
 </body>
